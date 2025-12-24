@@ -1,0 +1,69 @@
+@model RestaurantDetailsViewModel
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="mb-3">
+    <a asp-action="Index" class="btn btn-secondary">&larr; Back to Restaurants</a>
+</div>
+
+<!-- Restaurant Header -->
+<div class="card mb-4">
+    <div class="card-body">
+        <h2>@Model.Name</h2>
+        <p class="mb-0">
+            <strong>Address:</strong> @Model.Address<br />
+            <strong>Phone:</strong> @Model.Phone<br />
+            <strong>Rating:</strong> ⭐ @Model.Rating.ToString("0.0")<br />
+            <strong>Delivery Fee:</strong> $@Model.DeliveryFee.ToString("0.00")
+        </p>
+    </div>
+</div>
+
+<!-- Products Table -->
+<h3>Menu</h3>
+
+@if (Model.Products.Count == 0)
+{
+    <div class="alert alert-warning">No products available at this time.</div>
+}
+else
+{
+    var groupedProducts = Model.Products.GroupBy(p => p.Category).OrderBy(g => g.Key);
+
+    @foreach (var group in groupedProducts)
+    {
+        <h4 class="mt-4">@group.Key</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var product in group.OrderBy(p => p.Name))
+                    {
+                        <tr>
+                            <td><strong>@product.Name</strong></td>
+                            <td>@product.Description</td>
+                            <td>$@product.Price.ToString("0.00")</td>
+                            <td>@product.Stock</td>
+                            <td>
+                                <form asp-action="AddToCart" method="post" class="d-inline">
+                                    <input type="hidden" name="productId" value="@product.ProductID" />
+                                    <input type="number" name="quantity" value="1" min="1" max="@product.Stock" class="form-control form-control-sm" style="width: 80px; display: inline-block;" />
+                                    <button type="submit" class="btn btn-success btn-sm ms-2">Add to Cart</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+}

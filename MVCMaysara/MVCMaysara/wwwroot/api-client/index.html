@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maysara API Client</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .section-card {
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .result-area {
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            padding: 15px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .api-endpoint {
+            background-color: #e9ecef;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-family: monospace;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        .status-success {
+            color: #28a745;
+            font-weight: bold;
+        }
+        .status-error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary mb-4">
+        <div class="container-fluid">
+            <span class="navbar-brand mb-0 h1">Maysara Delivery - API Client</span>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="alert alert-info">
+            <strong>Note:</strong> This client uses the Customer API endpoints. Make sure you're logged in as a Customer in the main application first.
+        </div>
+
+        <!-- Restaurant Operations -->
+        <div class="card section-card">
+            <div class="card-header bg-primary text-white">
+                <h5>Restaurant Operations</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-8">
+                        <div class="api-endpoint">GET /api/customer/restaurants</div>
+                        <label for="searchTerm" class="form-label">Search Term (optional):</label>
+                        <input type="text" id="searchTerm" class="form-control" placeholder="Restaurant name">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" onclick="searchRestaurants()">Search Restaurants</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="api-endpoint">GET /api/customer/restaurants/{id}</div>
+                        <label for="restaurantId" class="form-label">Restaurant ID:</label>
+                        <input type="number" id="restaurantId" class="form-control" placeholder="Enter restaurant ID">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" onclick="getRestaurantDetails()">Get Restaurant Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cart Operations -->
+        <div class="card section-card">
+            <div class="card-header bg-success text-white">
+                <h5>Cart Operations</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="api-endpoint">GET /api/customer/cart</div>
+                        <button class="btn btn-success w-100" onclick="getCart()">View Cart</button>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <div class="api-endpoint">POST /api/customer/cart/add</div>
+                        <label for="addProductId" class="form-label">Product ID:</label>
+                        <input type="number" id="addProductId" class="form-control" placeholder="Enter product ID">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="addQuantity" class="form-label">Quantity:</label>
+                        <input type="number" id="addQuantity" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-success w-100" onclick="addToCart()">Add</button>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <div class="api-endpoint">PUT /api/customer/cart/update</div>
+                        <label for="updateProductId" class="form-label">Product ID:</label>
+                        <input type="number" id="updateProductId" class="form-control" placeholder="Enter product ID">
+                    </div>
+                    <div class="col-md-5">
+                        <label for="updateQuantity" class="form-label">New Quantity:</label>
+                        <input type="number" id="updateQuantity" class="form-control" value="1" min="1">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-warning w-100" onclick="updateCart()">Update</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-10">
+                        <div class="api-endpoint">DELETE /api/customer/cart/remove/{productId}</div>
+                        <label for="removeProductId" class="form-label">Product ID to Remove:</label>
+                        <input type="number" id="removeProductId" class="form-control" placeholder="Enter product ID">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-danger w-100" onclick="removeFromCart()">Remove</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Operations -->
+        <div class="card section-card">
+            <div class="card-header bg-warning">
+                <h5>Order Operations</h5>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="api-endpoint">GET /api/customer/orders</div>
+                        <button class="btn btn-warning w-100" onclick="getOrderHistory()">Get Order History</button>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-10">
+                        <div class="api-endpoint">GET /api/customer/orders/{id}</div>
+                        <label for="orderId" class="form-label">Order ID:</label>
+                        <input type="number" id="orderId" class="form-control" placeholder="Enter order ID">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-warning w-100" onclick="getOrderDetails()">Get Details</button>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="api-endpoint">POST /api/customer/orders</div>
+                        <label for="deliveryAddress" class="form-label">Delivery Address:</label>
+                        <input type="text" id="deliveryAddress" class="form-control" placeholder="Enter delivery address">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="paymentMethod" class="form-label">Payment Method:</label>
+                        <select id="paymentMethod" class="form-select">
+                            <option value="Cash">Cash</option>
+                            <option value="CreditCard">Credit Card</option>
+                            <option value="DebitCard">Debit Card</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-success w-100" onclick="placeOrder()">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Display -->
+        <div class="card section-card">
+            <div class="card-header bg-dark text-white">
+                <h5>API Response</h5>
+            </div>
+            <div class="card-body">
+                <div id="responseStatus" class="mb-2"></div>
+                <div id="responseData" class="result-area">
+                    <em>API responses will appear here...</em>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-4 mt-4 bg-light">
+        <p>&copy; 2025 Maysara Delivery - API Client Interface</p>
+    </footer>
+
+    <script src="api-client.js"></script>
+</body>
+</html>

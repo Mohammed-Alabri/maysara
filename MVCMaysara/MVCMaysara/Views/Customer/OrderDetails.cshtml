@@ -1,0 +1,90 @@
+@model Order
+@{
+    ViewData["Title"] = $"Order #{Model.OrderID}";
+
+    string statusClass = Model.Status.ToString() switch
+    {
+        "Pending" => "badge bg-warning text-dark",
+        "Confirmed" => "badge bg-info",
+        "Preparing" => "badge bg-primary",
+        "OutForDelivery" => "badge bg-success",
+        "Delivered" => "badge bg-success",
+        "Cancelled" => "badge bg-danger",
+        _ => "badge bg-secondary"
+    };
+}
+
+<div class="mb-3">
+    <a asp-action="OrderHistory" class="btn btn-secondary">&larr; Back to Orders</a>
+</div>
+
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <div class="d-flex justify-content-between align-items-center">
+            <h3 class="mb-0">Order #@Model.OrderID</h3>
+            <span class="@statusClass fs-5">@Model.Status</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <h5>Restaurant Information</h5>
+                <p>
+                    <strong>Name:</strong> @Model.Restaurant?.Name<br />
+                    <strong>Address:</strong> @Model.Restaurant?.Address<br />
+                    <strong>Phone:</strong> @Model.Restaurant?.Phone
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h5>Order Information</h5>
+                <p>
+                    <strong>Order Date:</strong> @Model.OrderDate.ToString("MMMM dd, yyyy hh:mm tt")<br />
+                    <strong>Delivery Address:</strong> @Model.DeliveryAddress<br />
+                    <strong>Payment Method:</strong> @Model.PaymentMethod
+                </p>
+            </div>
+        </div>
+
+        <h5>Order Items</h5>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model.OrderItems != null)
+                    {
+                        decimal itemsTotal = 0;
+                        @foreach (var item in Model.OrderItems)
+                        {
+                            itemsTotal += item.UnitPrice * item.Quantity;
+                            <tr>
+                                <td><strong>@item.ProductName</strong></td>
+                                <td>$@item.UnitPrice.ToString("0.00")</td>
+                                <td>@item.Quantity</td>
+                                <td>$@((item.UnitPrice * item.Quantity).ToString("0.00"))</td>
+                            </tr>
+                        }
+                        <tr class="table-secondary">
+                            <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
+                            <td><strong>$@itemsTotal.ToString("0.00")</strong></td>
+                        </tr>
+                        <tr class="table-secondary">
+                            <td colspan="3" class="text-end"><strong>Delivery Fee:</strong></td>
+                            <td><strong>$@((Model.TotalAmount - itemsTotal).ToString("0.00"))</strong></td>
+                        </tr>
+                        <tr class="table-dark">
+                            <td colspan="3" class="text-end"><h5 class="mb-0">Grand Total:</h5></td>
+                            <td><h5 class="mb-0 text-success">$@Model.TotalAmount.ToString("0.00")</h5></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
