@@ -1,6 +1,0 @@
-@Maysara.Server_HostAddress = http://localhost:5196
-
-GET {{Maysara.Server_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
