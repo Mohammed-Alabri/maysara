@@ -1,0 +1,84 @@
+@page
+@model MaysaraRazorPages.Pages.Restaurants.IndexModel
+@{
+    ViewData["Title"] = "Restaurants";
+}
+
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="mb-3">Browse Restaurants</h2>
+
+            <!-- Search Form -->
+            <form method="get" class="mb-4">
+                <div class="input-group">
+                    <input type="text" name="searchTerm" class="form-control" placeholder="Search restaurants by name..." value="@Model.SearchTerm" />
+                    <button class="btn btn-primary" type="submit">Search</button>
+                    @if (!string.IsNullOrEmpty(Model.SearchTerm))
+                    {
+                        <a asp-page="/Restaurants/Index" class="btn btn-secondary">Clear</a>
+                    }
+                </div>
+            </form>
+        </div>
+    </div>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <div class="row">
+        @if (Model.Restaurants != null && Model.Restaurants.Rows.Count > 0)
+        {
+            @foreach (System.Data.DataRow restaurant in Model.Restaurants.Rows)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@restaurant["Name"]</h5>
+                            <p class="card-text">
+                                <i class="bi bi-geo-alt"></i> @restaurant["Address"]
+                            </p>
+                            <p class="card-text">
+                                <i class="bi bi-telephone"></i> @restaurant["Phone"]
+                            </p>
+                            <div class="mb-2">
+                                <span class="badge bg-warning text-dark">
+                                    Rating: @string.Format("{0:0.00}", restaurant["Rating"])
+                                </span>
+                                <span class="badge bg-info text-dark">
+                                    Delivery: @MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency((decimal)restaurant["DeliveryFee"])
+                                </span>
+                            </div>
+                            @if (Convert.ToBoolean(restaurant["IsActive"]))
+                            {
+                                <span class="badge bg-success">Open</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Closed</span>
+                            }
+                        </div>
+                        <div class="card-footer bg-transparent">
+                            <a asp-page="/Restaurants/Details" asp-route-id="@restaurant["RestaurantID"]" class="btn btn-primary btn-sm w-100">
+                                View Menu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <h4>No restaurants found</h4>
+                    <p>@(string.IsNullOrEmpty(Model.SearchTerm) ? "There are no active restaurants at the moment." : $"No restaurants match '{Model.SearchTerm}'. Try a different search term.")</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,145 @@
+@page
+@model MaysaraRazorPages.Pages.Products.CreateModel
+@{
+    ViewData["Title"] = "Add New Product";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Add New Product</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @Model.SuccessMessage
+                        </div>
+                    }
+
+                    <form method="post">
+                        <div class="mb-3">
+                            <label asp-for="NewProduct.RestaurantID" class="form-label">Restaurant</label>
+                            <select asp-for="NewProduct.RestaurantID" class="form-select" asp-items="Model.RestaurantList">
+                                <option value="">-- Select Restaurant --</option>
+                            </select>
+                            <span asp-validation-for="NewProduct.RestaurantID" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewProduct.Name" class="form-label"></label>
+                            <input asp-for="NewProduct.Name" class="form-control" placeholder="Enter product name" />
+                            <span asp-validation-for="NewProduct.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="NewProduct.Description" class="form-label"></label>
+                            <textarea asp-for="NewProduct.Description" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                            <span asp-validation-for="NewProduct.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NewProduct.Price" class="form-label"></label>
+                                <input asp-for="NewProduct.Price" class="form-control" placeholder="0.00" />
+                                <span asp-validation-for="NewProduct.Price" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NewProduct.Category" class="form-label"></label>
+                                <input asp-for="NewProduct.Category" class="form-control" placeholder="e.g., Main Course, Appetizer" />
+                                <span asp-validation-for="NewProduct.Category" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label asp-for="NewProduct.Stock" class="form-label"></label>
+                                <input asp-for="NewProduct.Stock" class="form-control" placeholder="0" />
+                                <span asp-validation-for="NewProduct.Stock" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <div class="form-check mt-4">
+                                    <input asp-for="NewProduct.IsAvailable" class="form-check-input" />
+                                    <label asp-for="NewProduct.IsAvailable" class="form-check-label">
+                                        Available for order
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success btn-lg">Add Product</button>
+                            <a asp-page="/Products/Create" class="btn btn-secondary">View All Products</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Products List for Vendor -->
+            @if (Model.VendorProducts != null && Model.VendorProducts.Any())
+            {
+                <div class="card shadow mt-4">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">My Products</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Stock</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var product in Model.VendorProducts)
+                                    {
+                                        <tr>
+                                            <td>@product.Name</td>
+                                            <td>@product.Category</td>
+                                            <td>@MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency(product.Price)</td>
+                                            <td>@product.Stock</td>
+                                            <td>
+                                                @if (product.IsAvailable)
+                                                {
+                                                    <span class="badge bg-success">Available</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-danger">Unavailable</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-page="/Products/Edit" asp-route-id="@product.ProductID" class="btn btn-sm btn-warning">Edit</a>
+                                                <a asp-page="/Products/Delete" asp-route-id="@product.ProductID" class="btn btn-sm btn-danger">Delete</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,134 @@
+@page
+@model MaysaraRazorPages.Pages.Restaurants.DetailsModel
+@{
+    ViewData["Title"] = "Restaurant Details";
+}
+
+<div class="container mt-4">
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @Model.SuccessMessage
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+        <a asp-page="/Restaurants/Index" class="btn btn-secondary">Back to Restaurants</a>
+    }
+    else if (Model.Restaurant != null && Model.Restaurant.Rows.Count > 0)
+    {
+        var restaurant = Model.Restaurant.Rows[0];
+
+        <!-- Restaurant Header -->
+        <div class="card mb-4 shadow">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h2 class="mb-3">@restaurant["Name"]</h2>
+                        <p class="mb-2">
+                            <i class="bi bi-geo-alt"></i> <strong>Address:</strong> @restaurant["Address"]
+                        </p>
+                        <p class="mb-2">
+                            <i class="bi bi-telephone"></i> <strong>Phone:</strong> @restaurant["Phone"]
+                        </p>
+                        <div class="mb-3">
+                            <span class="badge bg-warning text-dark fs-6">
+                                Rating: @string.Format("{0:0.00}", restaurant["Rating"])
+                            </span>
+                            <span class="badge bg-info text-dark fs-6">
+                                Delivery Fee: @MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency((decimal)restaurant["DeliveryFee"])
+                            </span>
+                            @if (Convert.ToBoolean(restaurant["IsActive"]))
+                            {
+                                <span class="badge bg-success fs-6">Open Now</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger fs-6">Closed</span>
+                            }
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <a asp-page="/Restaurants/Index" class="btn btn-secondary">Back to Restaurants</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <div class="mb-4">
+            <h3 class="mb-3">Menu</h3>
+
+            @if (Model.Products != null && Model.Products.Rows.Count > 0)
+            {
+                <div class="row">
+                    @foreach (System.Data.DataRow product in Model.Products.Rows)
+                    {
+                        <div class="col-md-6 col-lg-4 mb-3">
+                            <div class="card h-100">
+                                <div class="card-body">
+                                    <h5 class="card-title">@product["Name"]</h5>
+                                    @if (!string.IsNullOrEmpty(product["Description"]?.ToString()))
+                                    {
+                                        <p class="card-text text-muted small">@product["Description"]</p>
+                                    }
+                                    <p class="mb-2">
+                                        <span class="badge bg-secondary">@product["Category"]</span>
+                                    </p>
+                                    <p class="mb-2">
+                                        <strong>Price:</strong>
+                                        <span class="text-primary fs-5">@MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency((decimal)product["Price"])</span>
+                                    </p>
+                                    <p class="mb-2">
+                                        <strong>Stock:</strong> @product["Stock"] units
+                                    </p>
+                                    @if (Convert.ToBoolean(product["IsAvailable"]) && Convert.ToInt32(product["Stock"]) > 0)
+                                    {
+                                        <span class="badge bg-success mb-2">Available</span>
+
+                                        @if (MaysaraRazorPages.Services.SessionManager.GetUserRole(HttpContext) == "Customer")
+                                        {
+                                            <form method="post" class="mt-2">
+                                                <input type="hidden" name="productId" value="@product["ProductID"]" />
+                                                <div class="input-group input-group-sm">
+                                                    <input type="number" name="quantity" value="1" min="1"
+                                                           max="@product["Stock"]" class="form-control" style="max-width: 70px;" />
+                                                    <button type="submit" class="btn btn-primary btn-sm">
+                                                        Add to Cart
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Out of Stock</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <p class="mb-0">No menu items available for this restaurant yet.</p>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-warning" role="alert">
+            <h4>Restaurant not found</h4>
+            <p>The restaurant you're looking for doesn't exist or has been removed.</p>
+        </div>
+        <a asp-page="/Restaurants/Index" class="btn btn-secondary">Back to Restaurants</a>
+    }
+</div>

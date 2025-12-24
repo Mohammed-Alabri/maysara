@@ -1,0 +1,115 @@
+@page
+@model MaysaraRazorPages.Pages.Orders.CheckoutModel
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4">Checkout</h2>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert alert-danger" role="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert alert-success" role="alert">
+            @Model.SuccessMessage
+            <hr />
+            <a asp-page="/Orders/MyOrders" class="btn btn-primary">View My Orders</a>
+        </div>
+    }
+    else
+    {
+        <!-- Order Form -->
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Order Details</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post">
+                            <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                            <div class="mb-3">
+                                <label asp-for="NewOrder.RestaurantID" class="form-label">Restaurant</label>
+                                <div class="form-control" style="background-color: #e9ecef;">
+                                    @{
+                                        var currentCart = MaysaraRazorPages.Services.SessionManager.GetCart(HttpContext);
+                                        var selectedRestaurant = Model.RestaurantList?.FirstOrDefault(r => r.Value == currentCart?.RestaurantID.ToString());
+                                    }
+                                    @(selectedRestaurant?.Text ?? "Loading...")
+                                </div>
+                                <input type="hidden" name="NewOrder.RestaurantID" value="@Model.NewOrder.RestaurantID" />
+                                <small class="text-muted">Restaurant is pre-selected based on your cart items</small>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="NewOrder.DeliveryAddress" class="form-label">Delivery Address</label>
+                                <textarea asp-for="NewOrder.DeliveryAddress" class="form-control" rows="2" placeholder="Enter delivery address"></textarea>
+                                <span asp-validation-for="NewOrder.DeliveryAddress" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="NewOrder.PaymentMethod" class="form-label">Payment Method</label>
+                                <select asp-for="NewOrder.PaymentMethod" asp-items="Html.GetEnumSelectList<MaysaraRazorPages.Models.Enums.PaymentMethod>()" class="form-select">
+                                    <option value="">-- Select Payment Method --</option>
+                                </select>
+                                <span asp-validation-for="NewOrder.PaymentMethod" class="text-danger"></span>
+                            </div>
+
+                            <hr />
+
+                            <h5 class="mb-3">Order Items from Cart</h5>
+
+                            @{
+                                var cart = MaysaraRazorPages.Services.SessionManager.GetCart(HttpContext);
+                                if (cart != null && cart.Items.Count > 0)
+                                {
+                                    <div class="list-group mb-3">
+                                        @foreach (var item in cart.Items)
+                                        {
+                                            <div class="list-group-item d-flex justify-content-between">
+                                                <div>
+                                                    <strong>@item.ProductName</strong>
+                                                    <br />
+                                                    <small class="text-muted">@MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency(item.Price) x @item.Quantity</small>
+                                                </div>
+                                                <div>
+                                                    <strong>@MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency(item.Subtotal)</strong>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="alert alert-info">
+                                        <strong>Total: @MaysaraRazorPages.Helpers.CurrencyHelper.FormatCurrency(cart.TotalAmount)</strong>
+                                    </div>
+                                    <a asp-page="/Orders/Cart" class="btn btn-link">Modify Cart</a>
+                                }
+                                else
+                                {
+                                    <div class="alert alert-warning">
+                                        Your cart is empty. <a asp-page="/Restaurants/Index">Browse restaurants</a>
+                                    </div>
+                                }
+                            }
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-success btn-lg">Place Order</button>
+                                <a asp-page="/Restaurants/Index" class="btn btn-secondary">Cancel</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MaysaraRazorPages</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MaysaraRazorPages.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Maysara Delivery</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        </li>
+                        @if (MaysaraRazorPages.Services.SessionManager.IsAuthenticated(Context))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Restaurants/Index">Restaurants</a>
+                            </li>
+                            @if (MaysaraRazorPages.Services.SessionManager.GetUserRole(Context) == "Vendor")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-page="/Restaurants/Manage">My Restaurants</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-page="/Products/Create">My Products</a>
+                                </li>
+                            }
+                            @if (MaysaraRazorPages.Services.SessionManager.GetUserRole(Context) == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-page="/Admin/Dashboard">Dashboard</a>
+                                </li>
+                            }
+                            @if (MaysaraRazorPages.Services.SessionManager.GetUserRole(Context) == "Customer")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-page="/Orders/MyOrders">My Orders</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark position-relative" asp-page="/Orders/Cart">
+                                        Cart
+                                        @{
+                                            var cartCount = MaysaraRazorPages.Services.SessionManager.GetCartItemCount(Context);
+                                            if (cartCount > 0)
+                                            {
+                                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                    @cartCount
+                                                </span>
+                                            }
+                                        }
+                                    </a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <ul class="navbar-nav">
+                        @if (MaysaraRazorPages.Services.SessionManager.IsAuthenticated(Context))
+                        {
+                            <li class="nav-item">
+                                <span class="navbar-text me-3">
+                                    Welcome, <strong>@MaysaraRazorPages.Services.SessionManager.GetUserName(Context)</strong>
+                                    (@MaysaraRazorPages.Services.SessionManager.GetUserRole(Context))
+                                </span>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Auth/Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Auth/Login">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="/Auth/Register">Register</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - MaysaraRazorPages - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

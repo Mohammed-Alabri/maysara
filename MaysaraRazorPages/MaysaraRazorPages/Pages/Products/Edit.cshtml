@@ -1,0 +1,105 @@
+@page
+@model MaysaraRazorPages.Pages.Products.EditModel
+@{
+    ViewData["Title"] = "Edit Product";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h3 class="mb-0">Edit Product</h3>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @Model.ErrorMessage
+                        </div>
+                    }
+
+                    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @Model.SuccessMessage
+                        </div>
+                    }
+
+                    @if (Model.Product != null)
+                    {
+                        <form method="post">
+                            <input type="hidden" asp-for="Product.ProductID" />
+                            <input type="hidden" asp-for="Product.RestaurantID" />
+                            <input type="hidden" asp-for="Product.CreatedAt" />
+
+                            <div class="mb-3">
+                                <label class="form-label">Restaurant</label>
+                                <input type="text" class="form-control" value="@Model.RestaurantName" readonly />
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Product.Name" class="form-label"></label>
+                                <input asp-for="Product.Name" class="form-control" />
+                                <span asp-validation-for="Product.Name" class="text-danger"></span>
+                            </div>
+
+                            <div class="mb-3">
+                                <label asp-for="Product.Description" class="form-label"></label>
+                                <textarea asp-for="Product.Description" class="form-control" rows="3"></textarea>
+                                <span asp-validation-for="Product.Description" class="text-danger"></span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Product.Price" class="form-label"></label>
+                                    <input asp-for="Product.Price" class="form-control" />
+                                    <span asp-validation-for="Product.Price" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Product.Category" class="form-label"></label>
+                                    <input asp-for="Product.Category" class="form-control" />
+                                    <span asp-validation-for="Product.Category" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label asp-for="Product.Stock" class="form-label"></label>
+                                    <input asp-for="Product.Stock" class="form-control" />
+                                    <span asp-validation-for="Product.Stock" class="text-danger"></span>
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-check mt-4">
+                                        <input asp-for="Product.IsAvailable" class="form-check-input" />
+                                        <label asp-for="Product.IsAvailable" class="form-check-label">
+                                            Available for order
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-warning btn-lg">Update Product</button>
+                                <a asp-page="/Products/Create" class="btn btn-secondary">Back to Products</a>
+                            </div>
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning">
+                            Product not found or you don't have permission to edit it.
+                        </div>
+                        <a asp-page="/Products/Create" class="btn btn-secondary">Back to Products</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

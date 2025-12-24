@@ -1,0 +1,188 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\pages\\admin\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\pages\\admin\\dashboard.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\pages\\auth\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\pages\\auth\\login.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\pages\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\pages\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\data\\maysaradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\data\\maysaradbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\data\\adonetdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\data\\adonetdataaccess.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\filters\\authorizepagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\filters\\authorizepagefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\helpers\\currencyhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\helpers\\currencyhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\pages\\auth\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\pages\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\pages\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|c:\\users\\mohdabri\\downloads\\maysararazorpages\\maysararazorpages\\maysararazorpages\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4205205A-BF36-6596-3D86-722E5440E6C4}|MaysaraRazorPages\\MaysaraRazorPages.csproj|solutionrelative:maysararazorpages\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 260,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dashboard.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Pages\\Admin\\Dashboard.cshtml.cs",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAywCsAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T18:52:33.187Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MaysaraDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Data\\MaysaraDbContext.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Data\\MaysaraDbContext.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Data\\MaysaraDbContext.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Data\\MaysaraDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T18:29:54.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Pages\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Login.cshtml",
+              "RelativeToolTip": "MaysaraRazorPages\\Pages\\Auth\\Login.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAADMAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T14:51:19.989Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Login.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Login.cshtml.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Pages\\Auth\\Login.cshtml.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Login.cshtml.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Pages\\Auth\\Login.cshtml.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAiwAoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T14:51:22.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdoNetDataAccess.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Data\\AdoNetDataAccess.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Data\\AdoNetDataAccess.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Data\\AdoNetDataAccess.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Data\\AdoNetDataAccess.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAywAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T18:29:50.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthorizePageFilter.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Filters\\AuthorizePageFilter.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Filters\\AuthorizePageFilter.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Filters\\AuthorizePageFilter.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Filters\\AuthorizePageFilter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T18:29:47.374Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CurrencyHelper.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Helpers\\CurrencyHelper.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Helpers\\CurrencyHelper.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Helpers\\CurrencyHelper.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Helpers\\CurrencyHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-07T18:29:42.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Pages\\Auth\\Register.cshtml.cs",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Register.cshtml.cs",
+              "RelativeToolTip": "MaysaraRazorPages\\Pages\\Auth\\Register.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-06T14:55:50.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\Pages\\Auth\\Register.cshtml",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\Pages\\Auth\\Register.cshtml",
+              "RelativeToolTip": "MaysaraRazorPages\\Pages\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-06T14:55:48.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\appsettings.json",
+              "RelativeDocumentMoniker": "MaysaraRazorPages\\appsettings.json",
+              "ToolTip": "C:\\Users\\MohdAbri\\Downloads\\MaysaraRazorPages\\MaysaraRazorPages\\MaysaraRazorPages\\appsettings.json",
+              "RelativeToolTip": "MaysaraRazorPages\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAEAQAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-04T19:54:17.574Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
